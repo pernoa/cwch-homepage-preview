@@ -418,6 +418,16 @@ a { text-decoration: none; color: inherit; }
   overflow: hidden;
 }
 
+.pastor-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transform: scaleX(-1);
+  filter: brightness(0.85);
+  display: block;
+}
+
 .pastor-photo-label {
   position: absolute; bottom: 0; left: 0; right: 0;
   padding: 20px 24px;
@@ -629,13 +639,13 @@ a { text-decoration: none; color: inherit; }
 }
 
 .newcomer-step {
-  background: rgba(255,255,255,0.04);
+  background: rgba(255,255,255,0.07);
   padding: 48px 36px;
   position: relative;
 }
 
 .newcomer-step-num {
-  font-size: 64px; font-weight: 900; color: rgba(255,255,255,0.08);
+  font-size: 64px; font-weight: 900; color: rgba(255,255,255,0.12);
   position: absolute; top: 20px; right: 24px; line-height: 1;
 }
 
@@ -645,7 +655,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 .newcomer-step-desc {
-  font-size: 15px; color: rgba(255,255,255,0.5); line-height: 1.7;
+  font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.7;
 }
 
 .newcomer-cta {
@@ -669,7 +679,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 .newcomer-cta-sub {
-  font-size: 14px; color: rgba(255,255,255,0.35);
+  font-size: 14px; color: rgba(255,255,255,0.55);
 }
 
 
@@ -1078,6 +1088,7 @@ a { text-decoration: none; color: inherit; }
 <section class="pastor-section" id="about">
   <div class="pastor-inner">
     <div class="pastor-photo">
+      <img src="images/pastor.webp" alt="이필산 담임목사">
       <div class="pastor-photo-label">이필산 담임목사</div>
     </div>
 
@@ -1192,7 +1203,7 @@ a { text-decoration: none; color: inherit; }
     <div class="newcomer-header">
       <div class="section-label">WELCOME</div>
       <h2>아무것도<br>준비하지 않아도<br>됩니다.</h2>
-      <p style="font-size: 17px; color: rgba(255,255,255,0.5); margin-top: 20px; font-weight: 300; line-height: 1.7;">그냥 오시면 됩니다. 나머지는 저희가 준비해 뒀습니다.</p>
+      <p style="font-size: 17px; color: rgba(255,255,255,0.7); margin-top: 20px; font-weight: 300; line-height: 1.7;">그냥 오시면 됩니다. 나머지는 저희가 준비해 뒀습니다.</p>
     </div>
 
     <div class="newcomer-steps">
