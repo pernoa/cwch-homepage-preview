@@ -729,18 +729,68 @@ a { text-decoration: none; color: inherit; }
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   gap: 64px;
+  align-items: start;
 }
 
 .location-map {
-  background: var(--navy-900);
-  min-height: 400px;
-  display: flex; align-items: center; justify-content: center;
+  background: var(--gray-200);
   position: relative;
+  overflow: hidden;
+  align-self: start;
 }
 
-.location-map-text {
-  color: rgba(255,255,255,0.3); font-size: 14px; font-weight: 500;
-  letter-spacing: 1px; text-transform: uppercase;
+.location-map-img {
+  width: 100%; height: auto; display: block;
+}
+
+/* 지도 위 청운교회 마커 강조 (50% / 58%) */
+.map-marker-pulse {
+  position: absolute; left: 50%; top: 58%;
+  width: 18px; height: 18px; margin: -9px 0 0 -9px;
+  border-radius: 50%;
+  background: rgba(214,69,52,0.35);
+  box-shadow: 0 0 0 0 rgba(214,69,52,0.55);
+  animation: mapPulse 2s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes mapPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(214,69,52,0.5); }
+  70%  { box-shadow: 0 0 0 22px rgba(214,69,52,0); }
+  100% { box-shadow: 0 0 0 0 rgba(214,69,52,0); }
+}
+
+/* 마커 → 건물 사진 연결선 */
+.map-connector {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+}
+.map-connector line {
+  stroke: #d64534; stroke-width: 0.5;
+  stroke-dasharray: 1.6 1.6;
+}
+.map-connector circle { fill: #d64534; }
+
+/* 건물 사진 코너 카드 */
+.map-photo-card {
+  position: absolute; top: 18px; right: 18px;
+  width: clamp(140px, 38%, 244px);
+  margin: 0;
+  background: var(--white);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.28);
+  border: 3px solid var(--white);
+}
+.map-photo-card img {
+  width: 100%; height: auto; display: block;
+}
+.map-photo-card figcaption {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 14px 12px 8px;
+  font-size: 13px; font-weight: 700; color: var(--white);
+  letter-spacing: -0.3px;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0));
 }
 
 .location-info h2 {
@@ -1289,7 +1339,16 @@ a { text-decoration: none; color: inherit; }
 <section class="location-section" id="location">
   <div class="location-inner">
     <div class="location-map">
-      <div class="location-map-text">지도 영역</div>
+      <img class="location-map-img" src="images/location-map.png" alt="청운교회 위치 지도 — 서울 강남구 언주로65길 6, 수인분당선 한티역 7번 출구">
+      <svg class="map-connector" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        <line x1="50" y1="58" x2="70" y2="30"></line>
+        <circle cx="50" cy="58" r="1.1"></circle>
+      </svg>
+      <span class="map-marker-pulse" aria-hidden="true"></span>
+      <figure class="map-photo-card">
+        <img src="images/church-building.png" alt="청운교회 건물 외관">
+        <figcaption>청운교회</figcaption>
+      </figure>
     </div>
 
     <div class="location-info">
